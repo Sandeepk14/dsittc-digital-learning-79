@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Users, Star, ShoppingCart } from "lucide-react";
+import { Clock, Users, Star, ShoppingCart, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CoursesSection = () => {
+  const navigate = useNavigate();
   const courses = [
     {
       id: 1,
@@ -85,17 +87,41 @@ const CoursesSection = () => {
     }
   ];
 
+  const handleViewDetails = (courseId: number) => {
+    navigate(`/course/${courseId}`);
+  };
+
+  const handleAddToCart = (course: any) => {
+    // This will be implemented with cart functionality
+    alert(`${course.name} added to cart!`);
+  };
+
+  const handleEnrollNow = (course: any) => {
+    // This will be implemented with payment gateway
+    navigate(`/course/${course.id}`);
+  };
+
   return (
     <section id="courses" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 animate-fade-in relative">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Our <span className="text-primary">Courses</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Choose from our comprehensive range of computer courses designed to boost your career in the digital age
           </p>
+          
+          {/* See All Button - positioned in upper right */}
+          <Button 
+            onClick={() => navigate('/courses')}
+            variant="outline" 
+            className="absolute top-0 right-0 hidden md:flex items-center"
+          >
+            See All Courses
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
         </div>
 
         {/* Courses Grid */}
@@ -165,11 +191,19 @@ const CoursesSection = () => {
               </CardContent>
 
               <CardFooter className="p-6 pt-0 space-y-3">
-                <Button variant="course" className="w-full">
+                <Button 
+                  variant="course" 
+                  className="w-full"
+                  onClick={() => handleAddToCart(course)}
+                >
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   Add to Cart
                 </Button>
-                <Button variant="outline" className="w-full">
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => handleViewDetails(course.id)}
+                >
                   View Details
                 </Button>
               </CardFooter>
@@ -179,7 +213,12 @@ const CoursesSection = () => {
 
         {/* View All Courses CTA */}
         <div className="text-center">
-          <Button variant="hero" size="lg" className="px-12 py-4 text-lg">
+          <Button 
+            onClick={() => navigate('/courses')}
+            variant="hero" 
+            size="lg" 
+            className="px-12 py-4 text-lg"
+          >
             View All Courses
           </Button>
         </div>

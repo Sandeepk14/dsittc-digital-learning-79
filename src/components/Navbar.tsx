@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ShoppingCart, BookOpen } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -41,13 +44,13 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#library"
+            <button
+              onClick={() => navigate('/library')}
               className="flex items-center space-x-2 text-secondary hover:text-secondary/80 transition-colors duration-200 font-medium"
             >
               <BookOpen className="h-4 w-4" />
               <span>Sunshine Digital Library</span>
-            </a>
+            </button>
           </div>
 
           {/* Action Buttons */}
@@ -90,14 +93,16 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#library"
-              className="flex items-center space-x-2 px-3 py-2 text-secondary hover:text-secondary/80 transition-colors duration-200 font-medium"
-              onClick={() => setIsOpen(false)}
+            <button
+              onClick={() => {
+                navigate('/library');
+                setIsOpen(false);
+              }}
+              className="flex items-center space-x-2 px-3 py-2 text-secondary hover:text-secondary/80 transition-colors duration-200 font-medium w-full text-left"
             >
               <BookOpen className="h-4 w-4" />
               <span>Sunshine Digital Library</span>
-            </a>
+            </button>
             <div className="flex items-center space-x-2 px-3 py-2">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
