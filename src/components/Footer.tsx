@@ -138,19 +138,18 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-white/70 mt-0.5 flex-shrink-0" />
                 <div className="text-white/80">
-                  <p>123 Education Street,</p>
-                  <p>Digital Learning Hub,</p>
-                  <p>Tech City - 110001</p>
+                  <p>BUS STAND, NH31 RAUZA,</p>
+                  <p>Uttar Pradesh 233002</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-white/70 flex-shrink-0" />
                 <div className="space-y-1">
                   <a href="tel:+919876543210" className="text-white/80 hover:text-white transition-colors block">
-                    +91 98765 43210
+                    +91 9140238240
                   </a>
                   <a href="tel:+919876543211" className="text-white/80 hover:text-white transition-colors block">
-                    +91 98765 43211
+                    +91 9305525008
                   </a>
                 </div>
               </div>
@@ -158,7 +157,7 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-white/70 flex-shrink-0" />
                 <div className="space-y-1">
                   <a href="mailto:info@dsittc.com" className="text-white/80 hover:text-white transition-colors block">
-                    info@dsittc.com
+                    info@dsitechnical.edug.in
                   </a>
                   <a href="mailto:admissions@dsittc.com" className="text-white/80 hover:text-white transition-colors block">
                     admissions@dsittc.com

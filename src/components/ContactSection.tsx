@@ -34,9 +34,9 @@ const ContactSection = () => {
                     <div>
                       <h4 className="font-semibold text-foreground mb-2">Visit Our Institute</h4>
                       <p className="text-muted-foreground leading-relaxed">
-                        123 Education Street,<br />
-                        Digital Learning Hub,<br />
-                        Tech City - 110001
+                        BUS STAND, NH31 RAUZA, Ghazipur,<br />
+                        Uttar Pradesh - 233002,<br />
+                        
                       </p>
                     </div>
                   </CardContent>
@@ -52,12 +52,12 @@ const ContactSection = () => {
                       <h4 className="font-semibold text-foreground mb-2">Call Us</h4>
                       <p className="text-muted-foreground">
                         <a href="tel:+919876543210" className="hover:text-primary transition-colors">
-                          +91 98765 43210
+                          +91 9140238240
                         </a>
                       </p>
                       <p className="text-muted-foreground">
                         <a href="tel:+919876543211" className="hover:text-primary transition-colors">
-                          +91 98765 43211
+                          +91 9305525008
                         </a>
                       </p>
                     </div>
@@ -74,7 +74,7 @@ const ContactSection = () => {
                       <h4 className="font-semibold text-foreground mb-2">Email Us</h4>
                       <p className="text-muted-foreground">
                         <a href="mailto:info@dsittc.com" className="hover:text-primary transition-colors">
-                          info@dsittc.com
+                         info@dsitechnical.edug.in
                         </a>
                       </p>
                       <p className="text-muted-foreground">
@@ -105,16 +105,18 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <Card className="shadow-card animate-slide-up" style={{ animationDelay: '0.2s' }}>
               <CardContent className="p-0">
-                <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                    <p className="text-muted-foreground">Interactive Map</p>
-                    <p className="text-sm text-muted-foreground">Location: Tech City</p>
-                  </div>
-                </div>
+                <iframe
+                  src="https://maps.google.com/maps?q=DSI%20Technical%20Training%20Centre%20Private%20Limited&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="256"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  className="rounded-lg"
+                ></iframe>
               </CardContent>
             </Card>
           </div>

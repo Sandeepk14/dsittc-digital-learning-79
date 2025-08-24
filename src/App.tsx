@@ -8,24 +8,31 @@ import Library from "./pages/Library";
 import CourseDetail from "./pages/CourseDetail";
 import AllCourses from "./pages/AllCourses";
 import NotFound from "./pages/NotFound";
+import Cart from "./pages/Cart";
+import PhotoGallery from "./pages/PhotoGallery";
+import { CartProvider } from "./context/CartContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+      <CartProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/library" element={<Library />} />
           <Route path="/courses" element={<AllCourses />} />
           <Route path="/course/:courseId" element={<CourseDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/photo-gallery" element={<PhotoGallery />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

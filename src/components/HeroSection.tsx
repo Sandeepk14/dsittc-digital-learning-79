@@ -79,10 +79,12 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="lg" className="text-lg px-8 py-4">
-                Explore Courses
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary">
+              <a href="#courses">
+                <Button variant="accent" size="lg" className="text-lg px-8 py-4">
+                  Explore Courses
+                </Button>
+              </a>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-green-500 text-white hover:bg-green-600 border-green-500">
                 Download Brochure
               </Button>
             </div>

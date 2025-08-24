@@ -1,40 +1,42 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Linkedin, Mail, Phone } from "lucide-react";
+import ceoImage from "@/assets/ceo-image.png";
+import ceoImage2 from "@/assets/ceo image.jpg";
 
 const TeamSection = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "CEO & Founder",
-      title: "Chief Executive Officer",
-      image: "/lovable-uploads/ed803951-d07e-4338-8b87-837ac43bd3f3.png",
+      name: "Er. Pradeep Kumar",
+      title: "CEO & Founder",
+      image: ceoImage2 ,
       bio: "Visionary leader with 15+ years of experience in digital education and technology training.",
       expertise: ["Digital Education", "Leadership", "Business Strategy", "Technology Innovation"],
       contact: {
         email: "ceo@dsittc.com",
-        phone: "+91 98765 43210",
+        phone: "+91 9140238240",
         linkedin: "linkedin.com/in/dsittc-ceo"
       }
     },
     {
       id: 2,
-      name: "Dr. Priya Sharma",
-      title: "Head of Academics",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&auto=format",
-      bio: "PhD in Computer Science with specialization in educational technology and curriculum development.",
+      name: "Er. Sandeep Kumar",
+      title: "Director of Academics",
+      image: ceoImage,
+      bio: "B.Tech in Information Technology with specialization in educational technology and curriculum development.",
       expertise: ["Curriculum Design", "Computer Science", "Educational Technology", "Research"],
       contact: {
-        email: "priya@dsittc.com",
+        email: "skraj5873@gmail.com",
         phone: "+91 98765 43211",
         linkedin: "linkedin.com/in/priya-sharma"
       }
     },
     {
       id: 3,
-      name: "Rajesh Kumar",
+      name: "Sanket Kumar",
       title: "Senior Programming Instructor",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&auto=format",
+      image: "ceoImage",
       bio: "Full-stack developer turned educator with expertise in modern web technologies and programming languages.",
       expertise: ["Web Development", "JavaScript", "Python", "Full-Stack Development"],
       contact: {
@@ -45,9 +47,9 @@ const TeamSection = () => {
     },
     {
       id: 4,
-      name: "Sneha Patel",
+      name: "Reema",
       title: "Digital Marketing Trainer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&auto=format",
+      image: "ceoImage",
       bio: "Digital marketing expert with proven track record in helping businesses grow through online strategies.",
       expertise: ["Digital Marketing", "SEO/SEM", "Social Media", "Content Strategy"],
       contact: {
@@ -58,9 +60,9 @@ const TeamSection = () => {
     },
     {
       id: 5,
-      name: "Amit Verma",
+      name: "Anjali",
       title: "Tally & Accounting Expert",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format",
+      image: "ceoImage",
       bio: "Chartered Accountant with extensive experience in Tally, GST, and financial software training.",
       expertise: ["Tally", "Accounting", "GST", "Financial Software"],
       contact: {
@@ -73,7 +75,7 @@ const TeamSection = () => {
       id: 6,
       name: "Ritu Singh",
       title: "Student Support Manager",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&auto=format",
+      image: "ceoImage",
       bio: "Dedicated to student success with expertise in career counseling and placement assistance.",
       expertise: ["Career Counseling", "Student Support", "Placement", "Soft Skills"],
       contact: {
@@ -101,32 +103,22 @@ const TeamSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <Card key={member.id} className="group overflow-hidden shadow-card hover:shadow-lg transition-all duration-300 animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-              <CardContent className="p-0">
+              <CardContent className="p-6 flex flex-col items-center">
                 {/* Image Section */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Social Links - Show on Hover */}
-                  <div className="absolute bottom-4 left-4 right-4 flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a href={`mailto:${member.contact.email}`} className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
-                      <Mail className="h-4 w-4 text-white" />
-                    </a>
-                    <a href={`tel:${member.contact.phone}`} className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
-                      <Phone className="h-4 w-4 text-white" />
-                    </a>
-                    <a href={`https://${member.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
-                      <Linkedin className="h-4 w-4 text-white" />
-                    </a>
+                <div className="relative w-40 h-40 mb-4">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-yellow-400 to-amber-600 p-1">
+                    <div className="bg-background rounded-full w-full h-full p-1">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover object-center rounded-full"
+                      />
+                    </div>
                   </div>
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6">
+                <div className="text-center">
                   <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                     {member.name}
                   </h3>
@@ -136,7 +128,7 @@ const TeamSection = () => {
                   </p>
 
                   {/* Expertise Tags */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 justify-center">
                     {member.expertise.map((skill, idx) => (
                       <Badge key={idx} variant="secondary" className="text-xs">
                         {skill}

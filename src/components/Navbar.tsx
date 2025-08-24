@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ShoppingCart, BookOpen } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, ShoppingCart, BookOpen, ChevronDown } from "lucide-react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { cart } = useCart();
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -64,16 +72,32 @@ const Navbar = () => {
               <BookOpen className="h-4 w-4" />
               <span>Sunshine Digital Library</span>
             </button>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-foreground hover:text-primary transition-colors duration-200 font-medium">
+                <span>Gallery</span>
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => navigate('/photo-gallery')}>
+                  Photo Gallery
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Video Gallery
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
-            </Button>
+            <Link to="/cart">
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cart.length}
+                </span>
+              </Button>
+            </Link>
             <Button variant="hero" size="sm">
               Enroll Now
             </Button>
@@ -118,13 +142,34 @@ const Navbar = () => {
               <BookOpen className="h-4 w-4" />
               <span>Sunshine Digital Library</span>
             </button>
+            <div className="px-3 py-2">
+              <p className="text-foreground font-medium">Gallery</p>
+              <div className="pl-2 mt-1 space-y-1">
+                <button
+                  onClick={() => {
+                    navigate('/photo-gallery');
+                    setIsOpen(false);
+                  }}
+                  className="block text-muted-foreground hover:text-primary transition-colors duration-200 w-full text-left"
+                >
+                  Photo Gallery
+                </button>
+                <button
+                  className="block text-muted-foreground hover:text-primary transition-colors duration-200 w-full text-left"
+                >
+                  Video Gallery
+                </button>
+              </div>
+            </div>
             <div className="flex items-center space-x-2 px-3 py-2">
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  0
-                </span>
-              </Button>
+              <Link to="/cart">
+                <Button variant="ghost" size="icon" className="relative">
+                  <ShoppingCart className="h-5 w-5" />
+                  <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {cart.length}
+                  </span>
+                </Button>
+              </Link>
               <Button variant="hero" size="sm">
                 Enroll Now
               </Button>

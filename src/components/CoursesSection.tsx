@@ -3,10 +3,28 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, Star, ShoppingCart, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/context/CartContext";
+
+interface Course {
+  id: number;
+  name: string;
+  description: string;
+  duration: string;
+  students: string;
+  rating: number;
+  price: number;
+  originalPrice: number;
+  image: string;
+  badge: string;
+  features: string[];
+}
 
 const CoursesSection = () => {
   const navigate = useNavigate();
-  const courses = [
+  const { toast } = useToast();
+  const { addToCart } = useCart();
+  const courses: Course[] = [
     {
       id: 1,
       name: "CCC (Course on Computer Concepts)",
@@ -91,12 +109,20 @@ const CoursesSection = () => {
     navigate(`/course/${courseId}`);
   };
 
-  const handleAddToCart = (course: any) => {
-    // This will be implemented with cart functionality
-    alert(`${course.name} added to cart!`);
+  const handleAddToCart = (course: Course) => {
+    addToCart(course); // This will now handle quantity
+    toast({
+      title: "Added to Cart",
+      description: `${course.name} has been added to your cart.`,
+      action: (
+        <Button variant="success" size="sm" onClick={() => navigate('/cart')}>
+          View Cart
+        </Button>
+      ),
+    });
   };
 
-  const handleEnrollNow = (course: any) => {
+  const handleEnrollNow = (course: Course) => {
     // This will be implemented with payment gateway
     navigate(`/course/${course.id}`);
   };
